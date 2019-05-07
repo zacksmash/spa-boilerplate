@@ -62,7 +62,6 @@ class LoginController extends Controller
      */
     protected function respondWithToken($token)
     {
-        return response(null, 201)
-            ->header('Authorization', $token);
+        return response(null, 201)->header('Authorization', $token);
     }
 }
