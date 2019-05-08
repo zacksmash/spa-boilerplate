@@ -1,25 +1,37 @@
 <template>
-  <div>
-    <div class="row">
-      <div class="large-5 medium-7 small-12 columns">
-        <div v-if="!token">
-          <form @submit.prevent="sendResetEmail">
-            <input type="email" v-model="user.email" placeholder="Email">
-            <button class="button">Send Email</button>
-          </form>
-        </div>
+  <section class="uk-section">
+    <div class="uk-container">
+      <div class="uk-flex-center" uk-grid>
+        <div class="uk-width-2-5@m">
+          <div class="uk-card uk-card-body uk-box-shadow-small">
+            <div v-if="!token">
+              <form @submit.prevent="sendResetEmail">
+                <div class="uk-margin">
+                  <input class="uk-input" type="email" v-model="user.email" placeholder="Email">
+                </div>
+                <button class="uk-button uk-button-primary">Send Email</button>
+              </form>
+            </div>
 
-        <div v-else>
-          <form @submit.prevent="resetPassword">
-            <input type="email" v-model="user.email" placeholder="Email">
-            <input type="password" v-model="user.password" placeholder="Password">
-            <input type="password" v-model="user.password_confirmation" placeholder="Confirm Password">
-            <button class="button">Reset Password</button>
-          </form>
+            <div v-else>
+              <form @submit.prevent="resetPassword">
+                <div class="uk-margin">
+                  <input class="uk-input" type="email" v-model="user.email" placeholder="Email">
+                </div>
+                <div class="uk-margin">
+                  <input class="uk-input" type="password" v-model="user.password" placeholder="Password">
+                </div>
+                <div class="uk-margin">
+                  <input class="uk-input" type="password" v-model="user.password_confirmation" placeholder="Confirm Password">
+                </div>
+                <button class="uk-button uk-button-primary">Reset Password</button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -42,10 +54,20 @@ export default {
         email: this.user.email
       })
       .then((res) => {
-        //
+        UIkit.notification({
+            message: 'A reset link has been re-sent to you',
+            status: 'success',
+            pos: 'top-right',
+            timeout: 5000
+        });
       })
       .catch((error) => {
-        //
+        UIkit.notification({
+            message: 'Oops! Something very bad happened',
+            status: 'error',
+            pos: 'top-right',
+            timeout: 5000
+        });
       })
     },
 
@@ -74,7 +96,12 @@ export default {
         });
       })
       .catch((error) => {
-        //
+        UIkit.notification({
+          message: 'Oops! Something very bad happened',
+          status: 'error',
+          pos: 'top-right',
+          timeout: 5000
+        });
       });
     },
   }

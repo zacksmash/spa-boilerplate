@@ -22,10 +22,9 @@
     "dependencies": {
         "@websanova/vue-auth": "^2.21.14-beta",
         "axios": "^0.18",
-        "foundation-sites": "^6.5.1",
         "jquery": "^3.2",
         "lodash": "^4.17.5",
-        "motion-ui": "^2.0.3",
+        "uikit": "^3.1.0",
         "vue": "^2.5.17",
         "vue-axios": "^2.1.4",
         "vue-router": "^3.0.2",

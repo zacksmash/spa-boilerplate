@@ -1,5 +1,5 @@
 // Import libraries
-import 'foundation-sites';
+import UIkitIcons from 'uikit/dist/js/uikit-icons';
 import _ from 'lodash';
 import $ from 'jquery';
 import axios from 'axios';
@@ -11,10 +11,8 @@ import Vuex from 'vuex';
 import VueRouter from 'vue-router';
 import VueAxios from 'vue-axios';
 
-// Attach jQuery to the window object
-try {
-  window.$ = window.jQuery = $;
-} catch (e) {}
+/** UIkit Icons Plugin */
+UIkit.use(UIkitIcons);
 
 // Setup the Base URL for all API requests
 let baseURL = `${location.protocol}//${location.hostname}`;

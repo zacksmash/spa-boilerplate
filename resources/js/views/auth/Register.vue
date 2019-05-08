@@ -1,17 +1,30 @@
 <template>
-  <div>
-    <div class="row">
-      <div class="large-5 medium-7 small-12 columns">
-        <form @submit.prevent="register">
-          <input type="text" v-model="user.name" placeholder="Name">
-          <input type="email" v-model="user.email" placeholder="Email">
-          <input type="password" v-model="user.password" placeholder="Password">
-          <input type="password" v-model="user.password_confirmation" placeholder="Confirm Password">
-          <button class="button">Submit</button>
-        </form>
+  <section class="uk-section">
+    <div class="uk-container">
+      <div class="uk-flex-center" uk-grid>
+        <div class="uk-width-2-5@m">
+          <div class="uk-card uk-card-body uk-box-shadow-small">
+            <form @submit.prevent="register">
+              <div class="uk-margin">
+                <input class="uk-input" type="text" v-model="user.name" placeholder="Name">
+              </div>
+              <div class="uk-margin">
+                <input class="uk-input" type="email" v-model="user.email" placeholder="Email">
+              </div>
+              <div class="uk-margin">
+                <input class="uk-input" type="password" v-model="user.password" placeholder="Password">
+              </div>
+              <div class="uk-margin">
+                <input class="uk-input" type="password" v-model="user.password_confirmation" placeholder="Confirm Password">
+              </div>
+
+              <button class="uk-button uk-button-primary">Submit</button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -32,7 +45,14 @@ export default {
       this.$auth.register({
         params: this.user,
         success: function () {},
-        error: function () {},
+        error: function () {
+          UIkit.notification({
+            message: 'Oops! Something very bad happened',
+            status: 'error',
+            pos: 'top-right',
+            timeout: 5000
+          });
+        },
         autoLogin: true,
         rememberMe: true,
         redirect: {name: 'dashboard'},

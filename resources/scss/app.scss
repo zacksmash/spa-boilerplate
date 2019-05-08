@@ -1,16 +1,19 @@
-/** Foundation core */
-@import 'foundation';
-
-/** NPM dependencies */
-// @import 'node_modules/path/to/plugin.scss';
-
-/** App variables/mixins */
+/** 1. Your custom variables and variable overwrites. */
 @import 'variables';
+@import 'settings';
 @import 'mixins';
+@import 'util/util';
 
-/** App components */
+/** 2. Import default variables and available mixins. */
+@import 'node_modules/uikit/src/scss/variables.scss';
+@import 'node_modules/uikit/src/scss/mixins.scss';
+
+/** 3. Your custom mixin overwrites. */
 @import 'components/buttons';
 @import 'components/forms';
 
-/** App Layouts */
+/** 4. Import UIkit */
+@import 'node_modules/uikit/src/scss/uikit.scss';
+
+/** 5. Site layouts */
 @import 'layouts/nav';

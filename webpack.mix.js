@@ -19,7 +19,10 @@ const publicPath  = `public`;
 
 mix
 // Add jQuery globally
-.autoload({ jquery: ['$', 'jQuery'] })
+.autoload({
+  jquery: ['$', 'jQuery'],
+  uikit: 'UIkit'
+})
 
 // Suppress success messages
 .disableSuccessNotifications()
@@ -38,7 +41,7 @@ mix
 
 // Setup BrowserSync
 .browserSync({
-  proxy: localDomain,
+  proxy: 'http://' + localDomain,
   host: localDomain,
   notify: false,
   open: false,
@@ -47,7 +50,11 @@ mix
     `**/*.php`,
     `${publicPath}/**/*.js`,
     `${publicPath}/**/*.css`
-  ]
+  ],
+  // https: {
+  //   key: '/Users/YOUR_COMPUTER/.config/valet/Certificates/YOUR_SITE.test.key',
+  //   cert: '/Users/YOUR_COMPUTER/.config/valet/Certificates/YOUR_SITE.test.crt'
+  // }
 })
 
 // Setup versioning (cache-busting)
