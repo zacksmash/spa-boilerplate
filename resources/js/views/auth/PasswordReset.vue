@@ -55,7 +55,7 @@ export default {
       })
       .then((res) => {
         UIkit.notification({
-            message: 'A reset link has been re-sent to you',
+            message: 'A reset link has been sent to you',
             status: 'success',
             pos: 'top-right',
             timeout: 5000
@@ -84,12 +84,8 @@ export default {
             email: this.user.email,
             password: this.user.password
           },
-          success: function() {
-            //
-          },
-          error: function (error) {
-            //
-          },
+          success: function() {},
+          error: function (error) {},
           rememberMe: true,
           fetchUser: true,
           redirect: '/',
